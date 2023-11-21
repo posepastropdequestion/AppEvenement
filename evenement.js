@@ -87,9 +87,19 @@ const boutonFiltrerPrix = document.querySelector(".btn-filtrer");
    });
   document.querySelector(".fiches").innerHTML = "";
     genererData(dataFiltrees);
-    console.log(dataFiltrees);
 });
 
+
+// const filtreCheckboxConcert=document.getElementById("concert")
+//   filtreCheckboxConcert.addEventListener("input", function() {
+//   const filtreConcert=resultatData.filter(function (resultatData) {
+//     if (resultatData.keywords_fr==="concert") {return resultatData}
+// });
+//     document.querySelector(".fiches").innerHTML = "";
+//    genererData(filtreConcert);
+//     console.log(filtreConcert)
+// });
+// console.log(resultatData)
 
 
 
