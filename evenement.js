@@ -6,7 +6,7 @@ const data = await request.json();
 const resultatData= data.results
 
 
-
+console.log(resultatData)
 
 function genererData(resultatData) {
   for (let i = 0; i < resultatData.length; i++) {
@@ -55,7 +55,7 @@ genererData(resultatData)
 
 const total=document.querySelector(".total")
 const totalAffichage=document.createElement("h3")
-totalAffichage.innerText="Total de concert : "+data.total_count
+totalAffichage.innerText="Total d'événements : "+data.total_count
 total.appendChild(totalAffichage)
 
 
@@ -90,16 +90,15 @@ const boutonFiltrerPrix = document.querySelector(".btn-filtrer");
 });
 
 
-// const filtreCheckboxConcert=document.getElementById("concert")
-//   filtreCheckboxConcert.addEventListener("input", function() {
-//   const filtreConcert=resultatData.filter(function (resultatData) {
-//     if (resultatData.keywords_fr==="concert") {return resultatData}
+//  const filtreCheckboxConcert=document.getElementById("concert")
+//    filtreCheckboxConcert.addEventListener("input", function() {
+//    const filtreConcert=resultatData.filter(function (resultatData) {
+//     return resultatData.keywords_fr
 // });
-//     document.querySelector(".fiches").innerHTML = "";
+//      document.querySelector(".fiches").innerHTML = "";
 //    genererData(filtreConcert);
-//     console.log(filtreConcert)
-// });
-// console.log(resultatData)
-
+//      console.log(filtreConcert)
+//  });
+ 
 
 
