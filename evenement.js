@@ -5,9 +5,8 @@ const request = await fetch('https://public.opendatasoft.com/api/explore/v2.1/ca
 const data = await request.json();
 const resultatData= data.results
 
-console.log(data.description_fr)
 
-
+function genererData(data) {
   for (let i = 0; i < resultatData.length; i++) {
 
     const sectionFiches = document.querySelector(".fiches");
@@ -28,7 +27,7 @@ console.log(data.description_fr)
     location.innerText = "Adresse : "+ evenement.location_address +" "+evenement.location_postalcode + " "+ evenement.location_city;
 
     const lien=document.createElement("href")
-    lien.innerText="lien"+evenement.canonicalurl;
+    lien.innerText="lien : voir plus"+evenement.canonicalurl;
     
     imageElement.src = resultatData[i].image;
     pieceElement.appendChild(imageElement);
@@ -40,5 +39,8 @@ console.log(data.description_fr)
     pieceElement.appendChild(lien);
   
   }
+}
+
+genererData(data)
 
 
