@@ -6,13 +6,18 @@ const data = await request.json();
 const resultatData= data.results
 
 
-function genererData(data) {
-  for (let i = 0; i < resultatData.length; i++) {
 
+
+function genererData(resultatData) {
+  for (let i = 0; i < resultatData.length; i++) {
+    const evenement = resultatData[i];
     const sectionFiches = document.querySelector(".fiches");
     const pieceElement = document.createElement("article");
     const imageElement = document.createElement("img");
-    const evenement = resultatData[i];
+    if (evenement.image) { imageElement.src = resultatData[i].image; }
+                          else{imageElement.src="https://th.bing.com/th/id/OIP.ODF68Yqk4FnO3-Kcbie-3AHaFl?rs=1&pid=ImgDetMain" }
+
+  
 
 
     const titleElement = document.createElement("h2");
@@ -28,19 +33,36 @@ function genererData(data) {
 
     const lien=document.createElement("href")
     lien.innerText="lien : voir plus"+evenement.canonicalurl;
+
+    const tarif=document.createElement("p")
+    tarif.innerText=evenement.conditions_fr;
+
     
-    imageElement.src = resultatData[i].image;
-    pieceElement.appendChild(imageElement);
+    
 
    sectionFiches.appendChild(pieceElement);
+    pieceElement.appendChild(imageElement);
     pieceElement.appendChild(titleElement);
     pieceElement.appendChild(dateElement);
     pieceElement.appendChild(location);
     pieceElement.appendChild(lien);
+    pieceElement.appendChild(tarif);
   
   }
 }
 
-genererData(data)
+genererData(resultatData)
 
+
+const boutonTrier = document.querySelector(".btn-trier");
+boutonTrier.addEventListener("click", function () {
+
+     const dataOrdonnees = Array.from(resultatData)
+     dataOrdonnees.sort(function (a, b) {
+         return a.title_fr.localeCompare(b.title_fr);
+     });
+    document.querySelector(".fiches").innerHTML = "";
+    genererData(dataOrdonnees);
+  console.log(dataOrdonnees)
+  });
 
