@@ -53,6 +53,11 @@ function genererData(resultatData) {
 
 genererData(resultatData)
 
+const total=document.querySelector(".total")
+const totalAffichage=document.createElement("h3")
+totalAffichage.innerText="Total de concert : "+data.total_count
+total.appendChild(totalAffichage)
+
 
 const boutonTrier = document.querySelector(".btn-trier");
 boutonTrier.addEventListener("click", function () {
@@ -67,12 +72,24 @@ boutonTrier.addEventListener("click", function () {
 
 const boutonFiltrer = document.querySelector(".btn-decroissant");
 boutonFiltrer.addEventListener("click", function () {
-   const dataDateCroissant = resultatData.sort(function (a,b) {
+   const dataDateCroissant = Array.from(resultatData)
+    dataDateCroissant.sort(function (a,b) {
        return a.firstdate_begin.localeCompare(b.firstdate_begin);
    });
   document.querySelector(".fiches").innerHTML = "";
     genererData(dataDateCroissant);
 });
+
+const boutonFiltrerPrix = document.querySelector(".btn-filtrer");
+  boutonFiltrerPrix.addEventListener("click", function () {
+   const dataFiltrees =resultatData.filter(function (resultatData) {
+        return resultatData.conditions_fr
+   });
+  document.querySelector(".fiches").innerHTML = "";
+    genererData(dataFiltrees);
+    console.log(dataFiltrees);
+});
+
 
 
 
