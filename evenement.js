@@ -63,6 +63,16 @@ boutonTrier.addEventListener("click", function () {
      });
     document.querySelector(".fiches").innerHTML = "";
     genererData(dataOrdonnees);
-  console.log(dataOrdonnees)
   });
+
+const boutonFiltrer = document.querySelector(".btn-decroissant");
+boutonFiltrer.addEventListener("click", function () {
+   const dataDateCroissant = resultatData.sort(function (a,b) {
+       return a.firstdate_begin.localeCompare(b.firstdate_begin);
+   });
+  document.querySelector(".fiches").innerHTML = "";
+    genererData(dataDateCroissant);
+});
+
+
 
